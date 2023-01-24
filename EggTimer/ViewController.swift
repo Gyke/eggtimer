@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var progressBarView: UIProgressView!
+    @IBOutlet weak var doneLabelView: UILabel!
+
     let eggPrepareTimes = [
         "Soft": 5.0,
         "Medium": 8.0,
@@ -17,12 +20,22 @@ class ViewController: UIViewController {
     ]
     
     @IBAction func eggImageTouched(_ sender: UIButton) {
+        self.progressBarView.isHidden = false
+        self.doneLabelView.isHidden = true
+        self.progressBarView.progress = 0.0
         setTimer(time: eggPrepareTimes[sender.currentTitle!]!)
     }
     
     func setTimer(time: Double) {
+        var currentPercent: Float = 0.0
+        let t = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            currentPercent = currentPercent + 1 / Float(time)
+            self.progressBarView.progress = currentPercent
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + time) {
-            print("Eggs ready!")
+            t.invalidate()
+            self.doneLabelView.isHidden = false
+            self.progressBarView.isHidden = true
         }
     }
 

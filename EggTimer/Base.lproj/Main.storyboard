@@ -121,6 +121,25 @@
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJN-th-c5K" userLabel="Timer View">
                                         <rect key="frame" x="0.0" y="568.5" width="374" height="245.5"/>
+                                        <subviews>
+                                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cKs-oI-5R8">
+                                                <rect key="frame" x="20" y="121" width="334" height="4"/>
+                                            </progressView>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Done!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4S-9s-aIs">
+                                                <rect key="frame" x="120" y="133" width="134" height="96"/>
+                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="60"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="z4S-9s-aIs" firstAttribute="centerX" secondItem="nJN-th-c5K" secondAttribute="centerX" id="4lV-0q-JCS"/>
+                                            <constraint firstItem="z4S-9s-aIs" firstAttribute="top" secondItem="cKs-oI-5R8" secondAttribute="bottom" constant="8" id="ERQ-Wl-PPE"/>
+                                            <constraint firstAttribute="trailing" secondItem="cKs-oI-5R8" secondAttribute="trailing" constant="20" id="TGj-bh-LLK"/>
+                                            <constraint firstItem="cKs-oI-5R8" firstAttribute="centerY" secondItem="nJN-th-c5K" secondAttribute="centerY" id="YS1-Pk-QRx"/>
+                                            <constraint firstItem="cKs-oI-5R8" firstAttribute="centerX" secondItem="nJN-th-c5K" secondAttribute="centerX" id="kJw-hs-e06"/>
+                                            <constraint firstItem="cKs-oI-5R8" firstAttribute="leading" secondItem="nJN-th-c5K" secondAttribute="leading" constant="20" id="lSg-zk-854"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -134,6 +153,10 @@
                             <constraint firstAttribute="trailingMargin" secondItem="wI6-ag-afn" secondAttribute="trailing" id="dky-ZA-Z3J"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="doneLabelView" destination="z4S-9s-aIs" id="4bt-QM-1ry"/>
+                        <outlet property="progressBarView" destination="cKs-oI-5R8" id="bYZ-wu-d8l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
