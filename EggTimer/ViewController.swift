@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
@@ -14,12 +15,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var doneLabelView: UILabel!
 
     let eggPrepareTimes: [String: Float] = [
-        "Soft": 5.0,
-        "Medium": 8.0,
-        "Hard": 12.0
+        "Soft"   : 5.0  * 60,
+        "Medium" : 8.0  * 60,
+        "Hard"   : 12.0 * 60
     ]
 
     var timer = Timer()
+    let player = try! AVAudioPlayer(contentsOf: Bundle.main.url(forResource: "alarm_sound", withExtension: "mp3")!)
+
 
     var remainingTime : Float = 0
     var maxTime       : Float = 0
@@ -40,6 +43,7 @@ class ViewController: UIViewController {
                 self.timer.invalidate()
                 self.doneLabelView.isHidden = false
                 self.progressBarView.isHidden = true
+                self.player.play()
             }
         }
     }
